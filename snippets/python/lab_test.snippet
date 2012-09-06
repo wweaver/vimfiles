@@ -1,0 +1,16 @@
+from httplib import OK
+
+from pylons import url
+
+from aweberlabs.model import meta
+from aweberlabs.tests import models as m
+from aweberlabs.tests.fixtures import ${1:Model}Data
+from aweberlabs.tests.functional.controllers.${2:controller} import ${3:$1}TestCase
+
+
+class When${4:TestClass}($3TestCase):
+
+	datasets = [$1Data]
+	url_args_defaults = dict(controller='$2', action='${5:action}')
+
+	${6}

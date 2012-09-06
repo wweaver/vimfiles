@@ -1,0 +1,11 @@
+def should_have_default_${1:attr}(self):
+	$2 = self.required_attrs['${2:parent}']
+	${3:`$INSTANCE`} = ${4:`$MODEL`}(**self.required_attrs)
+	with self.session.begin():
+		self.session.add($3)
+		now = self.session.query(func.now()) \
+				.filter($4.account_id == $2.account_id) \
+				.limit(1).scalar()
+	eq_($3.$1, now)
+	self.session.delete($3)
+	self.session.flush()

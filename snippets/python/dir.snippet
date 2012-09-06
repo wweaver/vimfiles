@@ -1,0 +1,14 @@
+print
+object_ = ${1:obj}
+for attr in dir(object_):
+	if not attr.startswith('__'):
+		print attr, ':',
+		try:
+			val = getattr(object_, attr)
+			if callable(val):
+				print 'Called:', val()
+			else:
+				print val
+		except Exception as exc:
+			print 'FAILED:', repr(exc)
+print

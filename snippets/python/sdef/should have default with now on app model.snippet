@@ -1,0 +1,10 @@
+def should_have_default_${1:attr}(self):
+	${2:`$INSTANCE`} = ${3:`$MODEL`}(**self.required_attrs)
+	with self.session.begin():
+		self.session.add($2)
+		now = self.session.query(func.now()) \
+				.filter($3.id > 0) \
+				.limit(1).scalar()
+	eq_($2.$1, now)
+	self.session.delete($2)
+	self.session.flush()

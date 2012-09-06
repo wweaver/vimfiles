@@ -1,0 +1,8 @@
+def should_delete_orphaned_${1:attr}(self):
+	self.session.begin()
+	self.${2:`$INSTANCE`}.$1 = []
+	self.session.flush()
+	eq_(self.$2.$1, [])
+	# fixture doesn't like if you delete its fixtures.
+	# Rolling back restores it.
+	self.session.rollback()

@@ -1,0 +1,10 @@
+def should_cascade_deletes_to_${1:relationship}(self):
+	${2:parent} = ${3:ParentClass}(${4:kwargs})
+	${5:child} = ${6:ChildClass}($2=$2, ${7:kwargs})
+	self.session.add($5)
+	self.session.flush()
+
+	self.session.delete($2)
+	self.session.flush()
+	assert_raises(NoResultFound, self.session.query($6)
+									 .filter_by($7).one)

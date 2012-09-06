@@ -1,0 +1,3 @@
+def should_require_unique_${1:attr}(self):
+    self.default.$1 = ${2:`$MODEL`}Data.specifies_all.$1
+	assert_raises(IntegrityError, self.session.flush)

@@ -1,0 +1,3 @@
+def should_have_resource_type(self):
+	eq_(self.body['resource_type_link'],
+	    self.base_url.join('#${1:resource_name}-page-resource'))

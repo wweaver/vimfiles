@@ -1,0 +1,50 @@
+snippet class
+	class ${1:name} (${2:args}) {
+	  # Begin definition
+	  ${3:...}
+	}
+snippet file
+	file { '${1:name}':
+	  ensure => '${2:present}',
+	  owner  => '${3:root}',
+	  group  => '${4:root}',
+	  mode   => '${5:0644}',
+	  notfiy => Service['${6:service}']
+	}
+snippet service
+	service { ${1:name}:
+	  ensure => '${2:running}',
+	}
+snippet package
+	package { ${1:name}:
+	  ensure => '${2:present}'
+	}
+snippet docs
+	# ${1:Full description of class here.}
+	#
+	# == Parameters
+	#
+	# [*${2:param}*]
+	#   ${3:Description}a
+	#
+	# == Variables
+	#
+	# [*${4:$aws}*]
+	#     ${5:aws_hash}
+	#
+	# == Examples
+	#
+	#   ${6:$example_var = "blah"}
+	#
+	# == Authors
+	#
+	# ${7:Your name} <${8:you}@aweber.com>
+	#
+	# == Copyright
+	#
+	# Copyright ${9:`strftime("%Y")`} AWeber Communications, unless otherwise noted.
+	#
+snippet param
+	#
+	# [$${1:name}*]
+	#    ${2:desc}

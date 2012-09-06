@@ -1,0 +1,2 @@
+def should_make_${1:attr}_read_only(self):
+	self.patch({'$1': ${2:value}}, status=BAD_REQUEST)

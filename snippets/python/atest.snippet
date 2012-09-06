@@ -1,0 +1,32 @@
+"""${1:Resource} resource functional tests."""
+from aw.nose.tools import eq_, is_
+
+from sylph.tests.functional import CollectionTestCase, EntryTestCase
+from sylph.tests.fixtures import ${2:Model}Data
+
+
+class Describe$1Collection(CollectionTestCase):
+	"""
+	# put code here (copy from old tests)
+	"""
+	request_uri = '' # (copy from old tests)
+
+	def should_have_total_size(self):
+		eq_(self.body['total_size'], 1)
+
+#	should_have_entries(self):
+#	should_have_resource_type(self):
+#
+#
+#class Describe$1Entry(EntryTestCase):
+#	"""
+#	# put code here (copy from old tests)
+#	"""
+#	request_uri = '' # (copy from old tests)
+#
+#	def setUp(self):
+#		super(Describe$1Entry, self).setUp()
+#		self.${3:fixture} = self.get_instance($2Data.$3)
+#
+#	def should_have_resource_type(self):
+#	def should_have_id(self):

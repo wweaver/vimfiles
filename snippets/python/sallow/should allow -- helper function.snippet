@@ -1,0 +1,9 @@
+def _should_allow_${1:attr}_of(self, $1):
+	"""Should allow $1 of '$1'"""
+	old_$1 = self.${2:`$INSTANCE`}.$1
+	self.$2.$1 = $1
+	self.session.flush()
+	self.session.expire(self.$2)
+	eq_(self.$2.$1, $1)
+	self.$2.$1 = old_$1
+	self.session.flush()
