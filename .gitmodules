@@ -4,3 +4,6 @@
 [submodule "bundle/Enter-Indent"]
 	path = bundle/Enter-Indent
 	url = git://github.com/vim-scripts/Enter-Indent.git
+[submodule "bundle/IndentAnything"]
+	path = bundle/IndentAnything
+	url = git://github.com/vim-scripts/IndentAnything.git
