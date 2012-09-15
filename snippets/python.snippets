@@ -237,15 +237,7 @@ snippet bin
 	$3().run()
 # IPython Interactive debugging
 snippet ipython
-	from IPython.Shell import IPShellEmbed
-	args = ['-pi1', 'In <\\#>: ', '-pi2', '   .\\D.: ', '-po', 'Out<\\#>: ']
-	ipshell = IPShellEmbed(
-		args,
-		banner='Entering IPython.  Press Ctrl-D to exit.',
-	    exit_msg='Leaving Interpreter.',
-	)
-	ipshell.IP.exit_now = False
-	ipshell('Entering ipython at ${1}')
+	__import__('IPython').embed()
 # SQLAlchemy
 snippet query session
 	${2:obj} = session.query(${1:Model})${3:.get(id)}
