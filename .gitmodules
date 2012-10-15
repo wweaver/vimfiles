@@ -82,3 +82,6 @@
 [submodule "bundle/webapi"]
 	path = bundle/webapi
 	url = git://github.com/mattn/webapi-vim.git
+[submodule "bundle/vim-pad"]
+	path = bundle/vim-pad
+	url = git://github.com/vim-scripts/vim-pad.git
