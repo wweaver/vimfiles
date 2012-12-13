@@ -85,3 +85,6 @@
 [submodule "bundle/vim-pad"]
 	path = bundle/vim-pad
 	url = git://github.com/vim-scripts/vim-pad.git
+[submodule "bundle/jedi-vim"]
+	path = bundle/jedi-vim
+	url = git://github.com/davidhalter/jedi-vim.git
