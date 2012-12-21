@@ -76,9 +76,6 @@
 [submodule "bundle/mru"]
 	path = bundle/mru
 	url = git://github.com/vim-scripts/mru.vim.git
-[submodule "bundle/gist"]
-	path = bundle/gist
-	url = git://github.com/mattn/gist-vim.git
 [submodule "bundle/webapi"]
 	path = bundle/webapi
 	url = git://github.com/mattn/webapi-vim.git
