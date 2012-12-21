@@ -82,3 +82,6 @@
 [submodule "bundle/vim-pad"]
 	path = bundle/vim-pad
 	url = git://github.com/vim-scripts/vim-pad.git
+[submodule "bundle/gist"]
+	path = bundle/gist
+	url = git@github.com:mattn/gist-vim.git
