@@ -54,13 +54,21 @@ endfunction
 au FileType perl call PerlPrefs()
 
 function! PythonPrefs()
-    setlocal textwidth=79
     setlocal makeprg=(echo\ '[%:p]';\ /Users/willw/bin/local/rpylint\ --include-pep8\ %:p)
     setlocal errorformat=%f:%l:%c:\ %m,%f:%l:\ %m
     setlocal keywordprg=pydoc
     setlocal isk-=:
+    if IsPythonTestFile()
+        setlocal textwidth=100
+    else
+        setlocal textwidth=79
+    endif
     if has("gui_running")
-        setlocal colorcolumn=80
+        if IsPythonTestFile()
+            setlocal colorcolumn=101
+        else
+            setlocal colorcolumn=80
+        endif
     endif
 
     let python_highlight_all = 1
@@ -85,7 +93,11 @@ endfunction
 au FileType javascript call JavascriptPrefs()
 
 
-au BufEnter * if &filetype == "python" | syntax match ErrorMsg '\%>79v.\+' | endif
+function! IsPythonTestFile()
+    return strpart(expand('%:t'), 0, 5) == 'test_'
+endfunction
+
+au BufEnter * if &filetype == "python" | if IsPythonTestFile()  | syntax match ErrorMsg '\%>100v.\+' | else | syntax match ErrorMsg '\%>79v.\+' | endif | endif
 au BufEnter * if &filetype == "php" | syntax match ErrorMsg '\%>120v.\+' | endif
 au BufEnter * if &filetype == "javascript" | syntax match ErrorMsg '\%>80v.\+' | endif
 
