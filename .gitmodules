@@ -88,3 +88,9 @@
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = git://github.com/tpope/vim-markdown.git
+[submodule "bundle/easymotion"]
+	path = bundle/easymotion
+	url = git://github.com/Lokaltog/vim-easymotion.git
+[submodule "bundle/signature"]
+	path = bundle/signature
+	url = git://github.com/kshenoy/vim-signature.git

@@ -37,7 +37,6 @@ autocmd FileType txt setlocal spell spelllang=en_us
 autocmd FileType txt setlocal binary | setlocal noeol
 autocmd FileType mako setlocal binary | setlocal noeol
 
-autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
 autocmd BufRead,BufNewFile *.pp set filetype=puppet
 
@@ -58,17 +57,17 @@ function! PythonPrefs()
     setlocal errorformat=%f:%l:%c:\ %m,%f:%l:\ %m
     setlocal keywordprg=pydoc
     setlocal isk-=:
-    if IsPythonTestFile()
-        setlocal textwidth=100
-    else
-        setlocal textwidth=79
-    endif
+    "if IsPythonTestFile()
+    "    setlocal textwidth=100
+    "else
+    setlocal textwidth=79
+    "endif
     if has("gui_running")
-        if IsPythonTestFile()
-            setlocal colorcolumn=101
-        else
-            setlocal colorcolumn=80
-        endif
+        "if IsPythonTestFile()
+        "    setlocal colorcolumn=101
+        "else
+        setlocal colorcolumn=80
+        "endif
     endif
 
     let python_highlight_all = 1
@@ -101,6 +100,22 @@ au BufEnter * if &filetype == "python" | if IsPythonTestFile()  | syntax match E
 au BufEnter * if &filetype == "php" | syntax match ErrorMsg '\%>120v.\+' | endif
 au BufEnter * if &filetype == "javascript" | syntax match ErrorMsg '\%>80v.\+' | endif
 
+function SetWrap()
+    setlocal wrap linebreak nolist
+    set virtualedit=
+    setlocal display+=lastline
+    noremap  <buffer> <silent> <Up>   gk
+    noremap  <buffer> <silent> <Down> gj
+    noremap  <buffer> <silent> <Home> g<Home>
+    noremap  <buffer> <silent> <End>  g<End>
+    inoremap <buffer> <silent> <Up>   <C-o>gk
+    inoremap <buffer> <silent> <Down> <C-o>gj
+    inoremap <buffer> <silent> <Home> <C-o>g<Home>
+    inoremap <buffer> <silent> <End>  <C-o>g<End>
+endfunction
+
+autocmd FileType markdown call SetWrap()
+autocmd FileType php call SetWrap()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme/Colors                                                               "
