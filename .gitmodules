@@ -94,3 +94,6 @@
 [submodule "bundle/signature"]
 	path = bundle/signature
 	url = git://github.com/kshenoy/vim-signature.git
+[submodule "bundle/yankring"]
+	path = bundle/yankring
+	url = git://github.com/vim-scripts/YankRing.vim.git

@@ -537,7 +537,7 @@ noremap <leader>nt <ESC>:NERDTreeToggle<CR>
 let NERDTreeIgnore=[
     \ '\~$', '\.pyc$', '\.egg-info$', '_compressed\.js$',
     \ '^build-python2\.[56]$', '^tags$', '^branches$', '^Icon.$',
-    \ '^dist$', '^build$', '^reports$'
+    \ '^dist$', '^build$', '^reports$', '^__pycache__$'
     \ ]
 let NERDTreeWinPos='right'
 let NERDTreeSortOrder=['__*\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
