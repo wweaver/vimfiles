@@ -57,11 +57,11 @@ function! PythonPrefs()
     setlocal errorformat=%f:%l:%c:\ %m,%f:%l:\ %m
     setlocal keywordprg=pydoc
     setlocal isk-=:
-    "if IsPythonTestFile()
-    "    setlocal textwidth=100
-    "else
-    setlocal textwidth=79
-    "endif
+    if IsPythonTestFile()
+        setlocal textwidth=100
+    else
+        setlocal textwidth=79
+    endif
     if has("gui_running")
         "if IsPythonTestFile()
         "    setlocal colorcolumn=101
@@ -97,7 +97,7 @@ function! IsPythonTestFile()
 endfunction
 
 au BufEnter * if &filetype == "python" | if IsPythonTestFile()  | syntax match ErrorMsg '\%>100v.\+' | else | syntax match ErrorMsg '\%>79v.\+' | endif | endif
-au BufEnter * if &filetype == "php" | syntax match ErrorMsg '\%>120v.\+' | endif
+"au BufEnter * if &filetype == "php" | syntax match ErrorMsg '\%>120v.\+' | endif
 au BufEnter * if &filetype == "javascript" | syntax match ErrorMsg '\%>80v.\+' | endif
 
 function SetWrap()
@@ -237,6 +237,9 @@ map <C-F12> :BufExplorer<CR>
 map <F14> :BufExplorer<CR>
 map <F16> :MRU<CR>
 nmap <F19> :TagbarToggle<CR>
+
+
+map <leader>tb :TagbarToggle<CR>
 
 " Command-t settings and mappings
 " map <C-t> <Esc>:CommandT<CR>
@@ -629,14 +632,14 @@ if has("gui_running")
     highlight ColorColumn guibg=#111111
 
     " https://github.com/scrooloose/syntastic.git
-    let g:syntastic_mode_map = { 'mode': 'active',
-                               \ 'active_filetypes': ['javascript', 'python'],
-                               \ 'passive_filetypes': [] }
-    let g:syntastic_enable_signs=1
-    let g:syntastic_auto_jump=0
-    let g:syntastic_auto_loc_list=1
+    "let g:syntastic_mode_map = { 'mode': 'active',
+    "                           \ 'active_filetypes': ['javascript', 'python'],
+    "                           \ 'passive_filetypes': [] }
+    "let g:syntastic_enable_signs=1
+    "let g:syntastic_auto_jump=0
+    "let g:syntastic_auto_loc_list=1
 else
-    let g:syntastic_enable_signs=0
+    "let g:syntastic_enable_signs=0
 endif
 
 let g:snippets_dir = "~/.vim/snippets"
