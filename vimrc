@@ -237,10 +237,6 @@ map <F13> :%s/\s\+$//e<CR>
 map <C-F12> :BufExplorer<CR>
 map <F14> :BufExplorer<CR>
 map <F16> :MRU<CR>
-nmap <F19> :TagbarToggle<CR>
-
-
-map <leader>tb :TagbarToggle<CR>
 
 " Command-t settings and mappings
 " map <C-t> <Esc>:CommandT<CR>
@@ -400,6 +396,18 @@ function! SetWidth(width)
 endfunction
 command! -nargs=1 SetWidth call SetWidth(<q-args>)
 
+
+function! ResetTabs()
+    if has("multi_byte")
+        execute "set list listchars=tab:»·,trail:·,nbsp:·"
+    endif
+
+    execute "set expandtab"
+endfunction
+command! -nargs=0 ResetTabs call ResetTabs()
+
+autocmd FileType php call ResetTabs()
+
 function! OpenTests(pbase, tbase, tglob)
     " TODO: use finddir with a contat'ed let/expand to recursively search for
     " the tests/ directory
@@ -546,6 +554,15 @@ let NERDTreeIgnore=[
 let NERDTreeWinPos='right'
 let NERDTreeSortOrder=['__*\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let NERDTreeWinSize=45
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TagBar                                                                     "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <F19> :TagbarToggle<CR>
+map <leader>tb :TagbarToggle<CR>
+
+let g:tagbar_left = 1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
