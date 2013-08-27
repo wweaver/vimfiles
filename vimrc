@@ -623,7 +623,7 @@ map <F4> :execute "vimgrep /" . input('Enter search term: ') . "/j " .  input('E
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gist                                                                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:github_api_url = 'http://github-enterprise.colo.lair/api/v3'
+let g:github_api_url = 'https://github-enterprise.colo.lair/api/v3'
 let g:github_user = 'willw'
 let g:gist_open_browser_after_post = 1
 let g:gist_clip_command = 'pbcopy'
