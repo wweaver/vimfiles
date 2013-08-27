@@ -245,8 +245,8 @@ map <F16> :MRU<CR>
 
 
 " Ctrlp settings and mappings
-map <C-t> <Esc>:CtrlP %:p:h<CR>
-map ,t <Esc>:CtrlP %:p:h<CR>
+map <C-t> <Esc>:CtrlP .<CR>
+map ,t <Esc>:CtrlP .<CR>
 
 
 vmap <s-down> <down>
