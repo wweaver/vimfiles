@@ -11,6 +11,8 @@ set encoding=utf-8
 set showcmd              " display incomplete commands
 set laststatus=2         " Always show the statusline
 set wildignore=*.pyc,*.pyo,*/build,*.egg,*/env,*/*.egg-info  " Ignore these in most searches
+set wildmode=longest,list,full  " Tab completion for filename autocomplete
+set wildmenu             " allow wildmode autocompletion
 
 if filereadable($HOME."/.vim/tags")
     set tags=~/.vim/tags
