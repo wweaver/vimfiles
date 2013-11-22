@@ -43,6 +43,7 @@ autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
 autocmd BufRead,BufNewFile *.pp set filetype=puppet
 autocmd BufRead,BufNewFile *.log set filetype=syslog
 autocmd BufRead,BufNewFile *.pg set filetype=sql
+autocmd BufRead,BufNewFile Makefile.inc set filetype=make
 
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
