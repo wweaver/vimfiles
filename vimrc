@@ -526,7 +526,7 @@ let g:SuperTabDefaultCompletionType = "context"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ack                                                                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let ackprg='/opt/local/bin/ack-5.12 -H --nocolor --nogroup --column'
+let ackprg='/opt/local/libexec/perl5.12/sitebin/ack -H --nocolor --nogroup --column'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
