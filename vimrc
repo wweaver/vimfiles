@@ -38,6 +38,9 @@ autocmd FileType txt setlocal wrap
 autocmd FileType txt setlocal spell spelllang=en_us
 autocmd FileType txt setlocal binary | setlocal noeol
 autocmd FileType mako setlocal binary | setlocal noeol
+autocmd FileType mako setlocal spell spelllang=en_us
+autocmd FileType mako setlocal binary
+autocmd FileType mako setlocal textwidth=72
 
 autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
 autocmd BufRead,BufNewFile *.pp set filetype=puppet
