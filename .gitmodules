@@ -106,3 +106,6 @@
 [submodule "bundle/vim-markdown-preview"]
 	path = bundle/vim-markdown-preview
 	url = git@github.com:nelstrom/vim-markdown-preview.git
+[submodule "bundle/jira-open"]
+	path = bundle/jira-open
+	url = git@github.com:markabe/vim-jira-open.git
