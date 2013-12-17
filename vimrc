@@ -39,7 +39,6 @@ autocmd FileType txt setlocal spell spelllang=en_us
 autocmd FileType txt setlocal binary | setlocal noeol
 autocmd FileType mako setlocal binary | setlocal noeol
 autocmd FileType mako setlocal spell spelllang=en_us
-autocmd FileType mako setlocal binary
 autocmd FileType mako setlocal textwidth=72
 
 autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
@@ -47,6 +46,7 @@ autocmd BufRead,BufNewFile *.pp set filetype=puppet
 autocmd BufRead,BufNewFile *.log set filetype=syslog
 autocmd BufRead,BufNewFile *.pg set filetype=sql
 autocmd BufRead,BufNewFile Makefile.inc set filetype=make
+autocmd BufRead,BufNewFile *.confluence set filetype=confluencewiki
 
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
@@ -123,6 +123,7 @@ function SetWrap()
 endfunction
 
 autocmd FileType markdown call SetWrap()
+autocmd FileType confluencewiki call SetWrap()
 autocmd FileType php call SetWrap()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -634,6 +635,12 @@ let g:github_api_url = 'https://github-enterprise.colo.lair/api/v3'
 let g:github_user = 'willw'
 let g:gist_open_browser_after_post = 1
 let g:gist_clip_command = 'pbcopy'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Gist                                                                       "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jira_browse_url = 'https://jira.colo.lair/browse/'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
