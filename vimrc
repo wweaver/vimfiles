@@ -40,13 +40,7 @@ autocmd FileType txt setlocal binary | setlocal noeol
 autocmd FileType mako setlocal binary | setlocal noeol
 autocmd FileType mako setlocal spell spelllang=en_us
 autocmd FileType mako setlocal textwidth=72
-
-autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
-autocmd BufRead,BufNewFile *.pp set filetype=puppet
-autocmd BufRead,BufNewFile *.log set filetype=syslog
-autocmd BufRead,BufNewFile *.pg set filetype=sql
-autocmd BufRead,BufNewFile Makefile.inc set filetype=make
-autocmd BufRead,BufNewFile *.confluence set filetype=confluencewiki
+autocmd FileType confluencewiki setlocal spell spelllang=en_us
 
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
@@ -530,7 +524,7 @@ let g:SuperTabDefaultCompletionType = "context"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ack                                                                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let ackprg='/opt/local/libexec/perl5.12/sitebin/ack -H --nocolor --nogroup --column'
+let ackprg='/opt/local/libexec/perl5.12/sitebin/ack -H --nocolor --nogroup --column --ignore-dir=env'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -583,7 +577,7 @@ let g:bufExplorerShowTabBuffer=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Project                                                                    "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let $PROJECT_HOME='~/svn'
+let $PROJECT_HOME='~/git'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -642,6 +636,14 @@ let g:gist_clip_command = 'pbcopy'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jira_browse_url = 'https://jira.colo.lair/browse/'
 
+if &diff
+    set t_Co=256
+    set background=dark
+    colorscheme peaksea
+else
+    colorscheme desert
+endif
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GVim                                                                       "
@@ -662,16 +664,6 @@ if has("gui_running")
     highlight CursorLine guibg=#111111
     highlight CursorColumn guibg=#111111
     highlight ColorColumn guibg=#111111
-
-    " https://github.com/scrooloose/syntastic.git
-    "let g:syntastic_mode_map = { 'mode': 'active',
-    "                           \ 'active_filetypes': ['javascript', 'python'],
-    "                           \ 'passive_filetypes': [] }
-    "let g:syntastic_enable_signs=1
-    "let g:syntastic_auto_jump=0
-    "let g:syntastic_auto_loc_list=1
-else
-    "let g:syntastic_enable_signs=0
 endif
 
 let g:snippets_dir = "~/.vim/snippets"
