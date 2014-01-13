@@ -49,7 +49,7 @@ function! PerlPrefs()
     setlocal makeprg=perl\ -c\ %
     setlocal errorformat=%f:%l:%m
     iab echo print
-    set path+=~/svn/trunk/code/awlib/AW,/etc/perl,/usr/local/lib/perl/5.8.8,/usr/local/share/perl/5.8.8,/usr/lib/perl5,/usr/share/perl5,/usr/lib/perl/5.8,/usr/share/perl/5.8
+    set path+=~/git/awlib/AW,/etc/perl,/usr/local/lib/perl/5.8.8,/usr/local/share/perl/5.8.8,/usr/lib/perl5,/usr/share/perl5,/usr/lib/perl/5.8,/usr/share/perl/5.8
     nmap <leader>m :vimgrep /^\s*sub / %<CR>:cw<CR>zO
 endfunction
 au FileType perl call PerlPrefs()
@@ -336,21 +336,12 @@ omap <special> <D-j> <Esc><D-j>
 " Abbreviations                                                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Other
+" Insert dates
 iab dateR <C-r>=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>
 iab pgdate <C-r>=strftime("%Y-%m-%d 00:00:00")<CR>
 iab pgtime <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
-iab xymd <C-r>=strftime("%Y-%m-%d")<CR>
-iab xdMy <C-r>=strftime("%d %M %Y")<CR>
-
-" Faster project nav
-cab AWEBER <C-r>=substitute(expand("%:p"), 'delmon', 'aweber', '')<CR>
-cab TRUNK <C-r>=substitute(expand("%:p"), 'release', 'trunk', '')<CR>
-cab REL <C-r>=substitute(expand("%:p"), 'trunk', 'release', '')<CR>
-cab CONT <C-r>=substitute(expand("%:p"), 'models\|views', 'controllers', '')<CR>
-cab MODEL <C-r>=substitute(expand("%:p"), 'controllers\|views', 'models', '')<CR>
-cab VIEW <C-r>=substitute(expand("%:p"), 'controllers\|models', 'views', '')<CR>
-
+iab ymd <C-r>=strftime("%Y-%m-%d")<CR>
+iab dmy <C-r>=strftime("%d %M %Y")<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions                                                                  "
@@ -632,7 +623,7 @@ let g:gist_clip_command = 'pbcopy'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Gist                                                                       "
+" JIRA                                                                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jira_browse_url = 'https://jira.colo.lair/browse/'
 
