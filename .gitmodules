@@ -112,3 +112,6 @@
 [submodule "bundle/ipython"]
 	path = bundle/ipython
 	url = git@github.com:ivanov/vim-ipython.git
+[submodule "bundle/airline"]
+	path = bundle/airline
+	url = git@github.com:bling/vim-airline.git
