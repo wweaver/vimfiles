@@ -627,6 +627,24 @@ let g:gist_clip_command = 'pbcopy'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jira_browse_url = 'https://jira.colo.lair/browse/'
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Python Mode                                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_rope = 0
+let g:pymode_rope_complete_on_dot = 0
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Snippets                                                                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:snippets_dir = "~/.vim/snippets"
+source ~/.vim/snippets/python/AWeber.vim
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Color scheme                                                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if &diff
     set t_Co=256
     set background=dark
@@ -634,13 +652,6 @@ if &diff
 else
     colorscheme desert
 endif
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Python Mode                                                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:pymode_rope = 0
-let g:pymode_rope_complete_on_dot = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -663,6 +674,3 @@ if has("gui_running")
     highlight CursorColumn guibg=#111111
     highlight ColorColumn guibg=#111111
 endif
-
-let g:snippets_dir = "~/.vim/snippets"
-source ~/.vim/snippets/python/AWeber.vim
