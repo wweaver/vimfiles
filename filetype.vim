@@ -14,6 +14,9 @@ autocmd BufRead,BufNewFile Makefile.inc set filetype=make
 autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
 autocmd BufRead,BufNewFile psql.edit.* set filetype=psql
 
+autocmd BufRead,BufNewFile *.x12 set filetype=x12
+autocmd BufRead,BufNewFile *.edi set filetype=x12
+
 " Cake files
 autocmd BufRead,BufNewFile *.ctp set filetype=php
 autocmd BufRead,BufNewFile *.htm set filetype=php
