@@ -9,11 +9,13 @@ elseif exists("b:current_syntax")
 endif
 
 syntax match X12Keyword "^[A-Z0-9]\+"  " The first word on each line is the keyword
+syntax match X12Start "^ST"  "The start and end of a section, just highlight this a little better
 syntax match X12Delim "\~"  " Record Delimiter
 syntax match X12Ops "\*"  " Item Separator
 syntax match X12Sep "\:"  " Not sure?
 
 hi def link X12Keyword Identifier
+hi def link X12Start   Constant
 hi def link X12Ops     Label
 hi def link X12Delim   String
 hi def link X12Sep     Special
