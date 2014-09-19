@@ -117,6 +117,7 @@ function SetWrap()
 endfunction
 
 autocmd FileType markdown call SetWrap()
+autocmd FileType text call SetWrap()
 autocmd FileType confluencewiki call SetWrap()
 autocmd FileType php call SetWrap()
 
