@@ -91,7 +91,7 @@ function! JavascriptPrefs()
     setlocal textwidth=80
     setlocal errorformat=%t:\ %m\ in\ %f\ on\ line\ %l
 endfunction
-au FileType javascript call JavascriptPrefs()
+"au FileType javascript call JavascriptPrefs()
 
 
 function! IsPythonTestFile()
@@ -100,7 +100,7 @@ endfunction
 
 au BufEnter * if &filetype == "python" | if IsPythonTestFile()  | syntax match ErrorMsg '\%>100v.\+' | else | syntax match ErrorMsg '\%>79v.\+' | endif | endif
 "au BufEnter * if &filetype == "php" | syntax match ErrorMsg '\%>120v.\+' | endif
-au BufEnter * if &filetype == "javascript" | syntax match ErrorMsg '\%>80v.\+' | endif
+"au BufEnter * if &filetype == "javascript" | syntax match ErrorMsg '\%>80v.\+' | endif
 
 function SetWrap()
     setlocal wrap linebreak nolist
@@ -128,8 +128,8 @@ set t_Co=256             " Enable 256-color mode.
 syntax enable            " Enable syntax highlighting (previously syntax on).
 
 syn keyword Todo contained TODO FIXME XXX NOTE
-hi link awError Error
-match awError /^[} \t]*\zs\(else\?\)\? \?if(/"
+"hi link awError Error
+"match awError /^[} \t]*\zs\(else\?\)\? \?if(/"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -192,7 +192,7 @@ set backspace=indent,eol,start  " backspace through everything in insert mode
 if version >= 600
     set foldenable
     set foldmethod=indent
-    set foldnestmax=2
+    set foldnestmax=5
     set foldlevelstart=20
     "set foldlevel=100
     "set fmr={,}
@@ -237,8 +237,6 @@ map <silent> <F5> :VCSBlame<CR>
 map <silent> <F6> :VCSDiff<CR>
 map <C-F8> :%s/\s\+$//<CR>
 map <F13> :%s/\s\+$//e<CR>
-map <C-F12> :BufExplorer<CR>
-map <F14> :BufExplorer<CR>
 map <F16> :MRU<CR>
 
 " Command-t settings and mappings
@@ -564,6 +562,9 @@ let g:tagbar_left = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:bufExplorerSortBy='fullpath'
 let g:bufExplorerShowTabBuffer=1
+map <C-F12> :BufExplorer<CR>
+map <F14> :BufExplorer<CR>
+noremap <leader>be <ESC>:BufExplorer<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -682,3 +683,16 @@ if has("gui_running")
     highlight CursorColumn guibg=#111111
     highlight ColorColumn guibg=#111111
 endif
+
+
+
+function! Clean()
+    set filetype=python
+    set filetype=
+    %s/\([\[\]]\)/\r\1\r/ge
+    %s/"//ge
+    %s/,/ /ge
+    g/^$/d
+    %s/=>\n\s*\[\n\s*\(.*\)\n\s*\]/ => [ \1 ]
+endfunction
+command! -nargs=0 Clean call Clean()
