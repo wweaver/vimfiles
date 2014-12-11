@@ -483,6 +483,10 @@ command! -nargs=1 Mod call Replace('module', <q-args>)
 command! -nargs=1 Fun call Replace('function', <q-args>)
 
 
+" Format XML
+command! -range FormatXML <line1>,<line2>!xmllint --format -
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Macros                                                                     "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
