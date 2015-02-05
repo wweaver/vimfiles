@@ -218,3 +218,7 @@ snippet fun
 # $... = array (...)
 snippet array
 	$${1:arrayName} = array('${2}' => ${3});${4}
+snippet debug
+	file_put_contents('php://stderr', ${1});
+snippet pa
+	print_r($${1}, true);

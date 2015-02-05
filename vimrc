@@ -391,8 +391,7 @@ command! -nargs=1 SetWidth call SetWidth(<q-args>)
 
 function! ResetTabs()
     if has("multi_byte")
-        "execute "set list listchars=tab:»·,trail:·,nbsp:·"
-        execute "set list listchars=trail:·,nbsp:·"
+        execute "set list listchars=tab:»·,trail:·,nbsp:·"
     endif
 
     execute "set expandtab"
