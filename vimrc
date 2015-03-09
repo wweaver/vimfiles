@@ -248,6 +248,7 @@ map <F16> :MRU<CR>
 " Ctrlp settings and mappings
 map <C-t> <Esc>:CtrlP .<CR>
 map ,t <Esc>:CtrlP .<CR>
+map ,c <Esc>:CtrlPClearAllCaches<CR>
 
 
 vmap <s-down> <down>
@@ -631,7 +632,14 @@ let g:gist_clip_command = 'pbcopy'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JIRA                                                                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:jira_browse_url = 'https://jira.colo.lair/browse/'
+let g:jira_browse_url = 'https://cruisecritic.atlassian.net'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tabline                                                                    "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
