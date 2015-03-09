@@ -219,6 +219,8 @@ snippet fun
 snippet array
 	$${1:arrayName} = array('${2}' => ${3});${4}
 snippet debug
-	file_put_contents('php://stderr', ${1});
+	file_put_contents('php://stderr', print_r(${1}, true));
 snippet pa
 	print_r($${1}, true);
+snippet pre
+	print "<pre>$${1}</pre>";
