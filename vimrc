@@ -259,6 +259,9 @@ map <s-up> <up>
 nmap <Tab> <c-w><c-w>
 nmap <S-Tab> <c-w><s-w>
 
+" Map indent and dedent to be one key stroke instead of two
+noremap > >>
+noremap < <<
 
 " Turn on/off search highlighting.
 map <silent> <leader>h :se invhlsearch<CR>
@@ -287,10 +290,6 @@ vmap <silent> <leader>= :Align => =<CR>
 nmap <leader>' di"hr'plr'
 nmap <leader>" di'hr"plr"
 
-" Faster access to common directories:
-cmap <leader>a code/sites/aweber_app/
-cmap <leader>w code/sites/aweber_app/webroot/
-
 " List methods within file:
 autocmd FileType php nmap <leader>m :vimgrep /^\s*\(private \\|public \)\?function / %<CR>:cw<CR>zO
 
@@ -303,9 +302,6 @@ nmap <silent> <leader>k :read !lynx -dump /usr/share/doc/php-doc/html/function.<
 " Convert between underscore and camelcase:
 nmap <leader>- ciw<C-R>=SwitchStyle("<C-R>"")<CR><ESC>
 
-" SVN blame a block of text:
-vmap <leader>b :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-
 " Fuzzy Finder prompt:
 map ,f :FufFile<CR>
 map ,b :FufBuffer<CR>
@@ -316,20 +312,25 @@ map ,s :Bs
 
 vmap <C-m> :BikeExtract<CR>
 
+" Remap Command-} to next buffer
+nnoremap <special> <D-}> <Esc>:bn<CR>
+vmap <special> <D-}> <Esc><D-k>gv
+imap <special> <D-}> <C-O><D-k>
+cmap <special> <D-}> <C-C><D-k>
+omap <special> <D-}> <Esc><D-k>
 
-" Remap Command-k to next buffer
-nnoremap <special> <D-k> <Esc>:bn<CR>
-vmap <special> <D-k> <Esc><D-k>gv
-imap <special> <D-k> <C-O><D-k>
-cmap <special> <D-k> <C-C><D-k>
-omap <special> <D-k> <Esc><D-k>
+" Remap Command-{ to prev buffer
+nnoremap <special> <D-{> <Esc>:bp<CR>
+vmap <special> <D-{> <Esc><D-j>gv
+imap <special> <D-{> <C-O><D-j>
+cmap <special> <D-{> <C-C><D-j>
+omap <special> <D-{> <Esc><D-j>
 
-" Remap Command-j to prev buffer
-nnoremap <special> <D-j> <Esc>:bp<CR>
-vmap <special> <D-j> <Esc><D-j>gv
-imap <special> <D-j> <C-O><D-j>
-cmap <special> <D-j> <C-C><D-j>
-omap <special> <D-j> <Esc><D-j>
+
+autocmd FileType html noremap <leader>ft <ESC>:set ft=php<CR>
+autocmd FileType php noremap <leader>ft <ESC>:set ft=html<CR>
+
+noremap <leader>nt <ESC>:NERDTreeToggle<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -672,7 +673,7 @@ endif
 " Fonts "
 """""""""
 let g:airline_powerline_fonts = 1
-set guifont=Droid\ Sans\ Mono\ for\ Powerline
+set guifont=Droid\ Sans\ Mono\ for\ Powerline:h12
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -708,3 +709,19 @@ function! Clean()
     %s/=>\n\s*\[\n\s*\(.*\)\n\s*\]/ => [ \1 ]
 endfunction
 command! -nargs=0 Clean call Clean()
+
+function! DeployFVC()
+    let branch_cmd = "cd ~/git/fvc; git branch | egrep -o '^\\* (.*)$' | sed 's/^\\* //'"
+    let fvc_branch = substitute(system(branch_cmd), '[\]\|[[:cntrl:]]', '', 'g')
+    let cmd = "~/bin/reup -s fvc " . fvc_branch
+    echom "Uploading to staging"
+    let resp = system(cmd)
+    echom "done"
+endfunction
+
+command! -nargs=0 DeployFVC call DeployFVC()
+"autocmd BufWritePost ~/git/fvc/*.php call DeployFVC()
+"autocmd BufWritePost ~/git/fvc/*.js call DeployFVC()
+"autocmd BufWritePost ~/git/fvc/*.css call DeployFVC()
+
+map <F17> :!gitX<CR>
