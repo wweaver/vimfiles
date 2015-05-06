@@ -694,7 +694,7 @@ if has("gui_running")
     set cursorline
     highlight CursorLine guibg=#111111
     highlight CursorColumn guibg=#111111
-    highlight ColorColumn guibg=#111111
+    highlight ColorColumn guibg=#333333
 endif
 
 
