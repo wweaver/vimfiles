@@ -223,4 +223,4 @@ snippet debug
 snippet pa
 	print_r($${1}, true);
 snippet pre
-	print "<pre>$${1}</pre>";
+	print '<pre>' . print_r($${1}, true) . '</pre>';
