@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"<br />html"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General                                                                    "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible         " Get rid of Vi compatibility mode. SET FIRST!
@@ -164,6 +164,8 @@ set visualbell t_vb=
 if has("multi_byte")
     scriptencoding utf-8  " Make sure the following is read as utf8.
     set list listchars=tab:»·,trail:·,nbsp:·
+    hi NonText ctermfg=7 guifg=gray
+    hi SpecialKey ctermfg=7 guifg=gray
     scriptencoding
 endif
 
@@ -260,8 +262,8 @@ nmap <Tab> <c-w><c-w>
 nmap <S-Tab> <c-w><s-w>
 
 " Map indent and dedent to be one key stroke instead of two
-noremap > >>
-noremap < <<
+nnoremap > >>
+nnoremap < <<
 
 " Turn on/off search highlighting.
 map <silent> <leader>h :se invhlsearch<CR>
@@ -520,7 +522,7 @@ let g:SuperTabDefaultCompletionType = "context"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ack                                                                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let ackprg='/usr/local/bin/ack -H --nocolor --nogroup --column --ignore-dir=env'
+let ackprg='/usr/local/bin/ack -H --nocolor --nogroup --column --ignore-dir=env --ignore-dir=.tox --ignore-dir=.eggs --ignore-dir="*.egg-info"'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -547,7 +549,7 @@ noremap <leader>nt <ESC>:NERDTreeToggle<CR>
 let NERDTreeIgnore=[
     \ '\~$', '\.pyc$', '\.egg-info$', '_compressed\.js$',
     \ '^build-python2\.[56]$', '^tags$', '^branches$', '^Icon.$',
-    \ '^dist$', '^build$', '^reports$', '^__pycache__$'
+    \ '^dist$', '^build$', '^__pycache__$'
     \ ]
 let NERDTreeWinPos='right'
 let NERDTreeSortOrder=['__*\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
@@ -644,11 +646,23 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic                                                                  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_php_phpcs_args='--standard=phpcs.xml'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python Mode                                                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:pymode_rope = 0
 let g:pymode_rope_complete_on_dot = 0
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Instant Markdown                                                           "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:instant_markdown_slow = 1
+" let g:instant_markdown_autostart = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets                                                                   "
