@@ -124,3 +124,6 @@
 [submodule "bundle/dispatch"]
 	path = bundle/dispatch
 	url = https://github.com/tpope/vim-dispatch.git
+[submodule "bundle/gulp"]
+	path = bundle/gulp
+	url = https://github.com/KabbAmine/gulp-vim.git
