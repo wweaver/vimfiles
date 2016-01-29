@@ -249,9 +249,11 @@ map <F16> :MRU<CR>
 
 " Ctrlp settings and mappings
 map <C-t> <Esc>:CtrlP .<CR>
-map ,t <Esc>:CtrlP .<CR>
-map ,c <Esc>:CtrlPClearAllCaches<CR>
+nnoremap ,t <Esc>:CtrlP .<CR>
+nnoremap ,c <Esc>:CtrlPClearAllCaches<CR>
 
+map <C-t> <Esc>:CtrlPGulp<CR>
+nnoremap ,g <Esc>:CtrlPGulp<CR>
 
 vmap <s-down> <down>
 map <s-down> <down>
@@ -543,7 +545,7 @@ let Tlist_File_Fold_Auto_Close=1
 " NERDTree                                                                   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <C-F9> :NERDTreeToggle<CR>
-map <F15> :NERDTreeToggle<CR>
+map <F15> :NERDTreeToggle<CR><C-L>
 noremap <leader>nt <ESC>:NERDTreeToggle<CR>
 
 let NERDTreeIgnore=[
@@ -656,6 +658,12 @@ let g:syntastic_php_phpcs_args='--standard=phpcs.xml'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:pymode_rope = 0
 let g:pymode_rope_complete_on_dot = 0
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Gulp                                                                       "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gv_ctrlp_cmd = 'GulpExt'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
