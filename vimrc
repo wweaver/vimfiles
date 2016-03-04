@@ -334,8 +334,6 @@ omap <special> <D-{> <Esc><D-j>
 autocmd FileType html noremap <leader>ft <ESC>:set ft=php<CR>
 autocmd FileType php noremap <leader>ft <ESC>:set ft=html<CR>
 
-noremap <leader>nt <ESC>:NERDTreeToggle<CR>
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Abbreviations                                                              "
@@ -557,6 +555,20 @@ let NERDTreeWinPos='right'
 let NERDTreeSortOrder=['__*\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let NERDTreeWinSize=45
 
+" call NERDTreeAddKeyMap({
+"     \ 'key': '<C-o>',
+"     \ 'scope': 'DirNode',
+"     \ 'callback': 'NERDTreeCustomOpenRecursively',
+"     \ 'quickhelptext': 'open all files in currenct directory' })
+"
+" function! NERDTreeCustomOpenRecursively()
+"     call nerdtree#echo("Recursively opening all files within node. Please wait...")
+"     call a:node.openRecursively()
+"     call b:NERDTree.render()
+"     redraw
+"     call nerdtree#echo("Recursively opening all files within node. Please wait... DONE")
+" endfunction
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TagBar                                                                     "
@@ -702,7 +714,7 @@ set guifont=Droid\ Sans\ Mono\ for\ Powerline:h12
 " GVim                                                                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("gui_running")
-    set lines=52 columns=120
+    set lines=134 columns=202
     set guioptions-=T
     set guioptions-=m
     set guicursor=a:blinkon0  " Disable gui cursor blinking.
