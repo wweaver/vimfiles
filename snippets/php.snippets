@@ -1,7 +1,5 @@
 snippet vd
-	echo '<pre>';
 	var_dump(${1:$this->data});
-	echo '</pre>';
 snippet php
 	<?php
 	${1}
@@ -224,3 +222,8 @@ snippet pa
 	print_r($${1}, true);
 snippet pre
 	print '<pre>' . print_r($${1}, true) . '</pre>';
+snippet test
+	public function test${1}()
+	{
+		${2}
+	}
