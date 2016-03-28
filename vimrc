@@ -10,7 +10,7 @@ set hidden               " Allow buffer nav without being forced to save
 set encoding=utf-8
 set showcmd              " display incomplete commands
 set laststatus=2         " Always show the statusline
-set wildignore=*.pyc,*.pyo,*/build,*.egg,*/env,*/*.egg-info  " Ignore these in most searches
+set wildignore=*.pyc,*.pyo,*/build,*.egg,*/env,*/*.egg-info,*/vendor/*,*/node_modules/*,*/migrations/*,*/logs/*,*/xhprof  " Ignore these in most searches
 set wildmode=longest,list,full  " Tab completion for filename autocomplete
 set wildmenu             " allow wildmode autocompletion
 
@@ -43,7 +43,7 @@ autocmd FileType mako setlocal textwidth=72
 autocmd FileType confluencewiki setlocal spell spelllang=en_us
 
 " Remove trailing whitespace
-autocmd BufWritePre * %s/\s\+$//e
+"autocmd BufWritePre * %s/\s\+$//e
 
 function! PerlPrefs()
     setlocal makeprg=perl\ -c\ %
@@ -210,9 +210,6 @@ endif
 " Make Y more logical:
 nmap Y y$
 
-" Remap ^d to quit vim:
-nmap <C-d> :quit<CR>
-
 nmap <leader>w /[A-Z]<CR>
 
 " Extend <C-l>:
@@ -226,40 +223,22 @@ vnoremap # y?\V<C-R>=substitute(escape(@@,"?\\"),"\n","\\\\n","ge")<CR><CR>
 map <F1> <Esc>
 imap <F1> <Esc>
 
-" Change the cwd of vim to the main directory of our app.
-noremap <F2> :cd <C-R>=expand("%:p:h")<CR><CR>
-
-" Commit all open buffers to SVN.
-map <F3> :!open <C-r>=expand("%:h")<CR><CR>
-
-" Run make on current file.
 map <silent> <F5> :VCSBlame<CR>
-
-" SVN Diff the given file.
 map <silent> <F6> :VCSDiff<CR>
-map <C-F8> :%s/\s\+$//<CR>
-map <F13> :%s/\s\+$//e<CR>
+"map <C-F8> :%s/\s\+$//<CR>
+"map <F13> :%s/\s\+$//e<CR>
+map <F13> :DeleteTrailing<CR>
+nnoremap <F13> :<C-u>%DeleteTrailingWhitespace<CR>
+vnoremap <F13> :DeleteTrailingWhitespace<CR>
 map <F16> :MRU<CR>
 
-" Command-t settings and mappings
-" map <C-t> <Esc>:CommandT<CR>
-" map ,t <Esc>:CommandT<CR>
-" let g:CommandTMaxHeight=30
-
-
-" Ctrlp settings and mappings
-map <C-t> <Esc>:CtrlP .<CR>
-nnoremap ,t <Esc>:CtrlP .<CR>
-nnoremap ,c <Esc>:CtrlPClearAllCaches<CR>
-
-map <C-t> <Esc>:CtrlPGulp<CR>
-nnoremap ,g <Esc>:CtrlPGulp<CR>
-
+" Map shift + arrow be the same as pressing arrow
 vmap <s-down> <down>
 map <s-down> <down>
 vmap <s-up> <up>
 map <s-up> <up>
 
+" Make tab switch windows
 nmap <Tab> <c-w><c-w>
 nmap <S-Tab> <c-w><s-w>
 
@@ -281,8 +260,8 @@ endif
 "inoremap <leader><tab>  <c-r>=MakeBlock()<cr>
 
 " Reformat/reindent pasted text.
-nnoremap <Esc>P P'[v']=
-nnoremap <Esc>p p'[v']=
+"nnoremap <Esc>P P'[v']=
+"nnoremap <Esc>p p'[v']=
 
 " Toggle fold under cursor.
 nnoremap  <silent>  <space> :exe 'silent! normal! za'.(foldlevel('.')?'':'l')<cr>
@@ -307,14 +286,9 @@ nmap <silent> <leader>k :read !lynx -dump /usr/share/doc/php-doc/html/function.<
 nmap <leader>- ciw<C-R>=SwitchStyle("<C-R>"")<CR><ESC>
 
 " Fuzzy Finder prompt:
-map ,f :FufFile<CR>
-map ,b :FufBuffer<CR>
-map ,l :FufLine<CR>
-
-" Buffer search
-map ,s :Bs
-
-vmap <C-m> :BikeExtract<CR>
+"map ,f :FufFile<CR>
+"map ,b :FufBuffer<CR>
+"map ,l :FufLine<CR>
 
 " Remap Command-} to next buffer
 nnoremap <special> <D-}> <Esc>:bn<CR>
@@ -596,48 +570,6 @@ let $PROJECT_HOME='~/git'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Grep                                                                       "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! QFixToggle(forced)
-    if exists("g:qfix_win") && a:forced == 0
-        cclose
-    else
-        execute "copen"
-    endif
-endfunction
-
-" Used to track the quickfix window.
-augroup QFixToggle
-    autocmd!
-    autocmd BufWinEnter quickfix let g:qfix_win = bufnr("$")
-    autocmd BufWinLeave * if exists("g:qfix_win") && expand("<abuf>") == g:qfix_win | unlet! g:qfix_win | endif
-augroup END
-" '\g' : grep all open buffers
-noremap <Leader>g <Esc>:GrepBuffer <CR>
-
-" '\gg' : grep all open buffers for word under cursor
-noremap <Leader>gg <Esc>:GrepBuffer <C-R><C-W><CR>
-
-" '\G' : recursively grep through filesystem
-noremap <Leader>G <Esc>:Rgrep<CR>
-
-" '\qq' : toggle QuickFix window (errors and vimgrep results here)
-noremap <silent><leader>qq <Esc>:call QFixToggle(0)<CR>
-
-" '[q' previous quickfix entry
-map [q :cprev<CR>
-
-" ']q' next quickfix entry
-map ]q :cnext<CR>
-
-" '\q*' : search for occurrences of word under cursor, and write to QuickFix
-noremap <silent><leader>q*  <Esc>:execute 'vimgrep '.expand('<cword>').' '.expand('%') <CR> :copen <CR> :cc
-
-" Vimgrep mappings
-map <F4> :execute "vimgrep /" . input('Enter search term: ') . "/j " .  input('Enter directory: ', getcwd()) . "/**/*.py" <Bar> cw<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gist                                                                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:github_api_url = 'https://github-enterprise.colo.lair/api/v3'
@@ -649,7 +581,7 @@ let g:gist_clip_command = 'pbcopy'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JIRA                                                                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:jira_browse_url = 'https://cruisecritic.atlassian.net'
+let g:jira_browse_url = 'https://jira.tripadvisor.com'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -662,7 +594,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic                                                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_php_phpcs_args='--standard=phpcs.xml'
+"let g:syntastic_php_phpcs_args='--standard=phpcs.xml'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -673,9 +605,29 @@ let g:pymode_rope_complete_on_dot = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrl-P                                                                     "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:25,results:25'
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+let g:ctrlp_use_caching = 1
+nnoremap ,p <Esc>:CtrlP .<CR>
+nnoremap ,f <Esc>:CtrlP .<CR>
+nnoremap ,t <Esc>:CtrlPTag<CR>
+nnoremap ,g <Esc>:CtrlPGulp<CR>
+nnoremap ,c <Esc>:CtrlPClearAllCaches<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gulp                                                                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gv_ctrlp_cmd = 'GulpExt'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Gutentags                                                                  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gutentags_exclude = ['*.css', '*.html', '*.js']
+let g:gutentags_cache_dir = $HOME . '/.cache/gutentags'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -683,6 +635,13 @@ let g:gv_ctrlp_cmd = 'GulpExt'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:instant_markdown_slow = 1
 " let g:instant_markdown_autostart = 0
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Delete Trailing Whitespace                                                 "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:DeleteTrailingWhitespace = 1
+let g:DeleteTrailingWhitespace_Action = 'delete'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets                                                                   "
@@ -731,31 +690,5 @@ if has("gui_running")
     highlight ColorColumn guibg=#333333
 endif
 
-
-
-function! Clean()
-    set filetype=python
-    set filetype=
-    %s/\([\[\]]\)/\r\1\r/ge
-    %s/"//ge
-    %s/,/ /ge
-    g/^$/d
-    %s/=>\n\s*\[\n\s*\(.*\)\n\s*\]/ => [ \1 ]
-endfunction
-command! -nargs=0 Clean call Clean()
-
-function! DeployFVC()
-    let branch_cmd = "cd ~/git/fvc; git branch | egrep -o '^\\* (.*)$' | sed 's/^\\* //'"
-    let fvc_branch = substitute(system(branch_cmd), '[\]\|[[:cntrl:]]', '', 'g')
-    let cmd = "~/bin/reup -s fvc " . fvc_branch
-    echom "Uploading to staging"
-    let resp = system(cmd)
-    echom "done"
-endfunction
-
-command! -nargs=0 DeployFVC call DeployFVC()
-"autocmd BufWritePost ~/git/fvc/*.php call DeployFVC()
-"autocmd BufWritePost ~/git/fvc/*.js call DeployFVC()
-"autocmd BufWritePost ~/git/fvc/*.css call DeployFVC()
 
 map <F17> :!gitX<CR>
