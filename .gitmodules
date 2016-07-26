@@ -136,3 +136,9 @@
 [submodule "bundle/DeleteTrailingWhitespace"]
 	path = bundle/DeleteTrailingWhitespace
 	url = https://github.com/vim-scripts/DeleteTrailingWhitespace.git
+[submodule "bundle/twig"]
+	path = bundle/twig
+	url = https://github.com/evidens/vim-twig.git
+[submodule "bundle/scss-syntax"]
+	path = bundle/scss-syntax
+	url = https://github.com/cakebaker/scss-syntax.vim.git

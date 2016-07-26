@@ -594,7 +594,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic                                                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:syntastic_php_phpcs_args='--standard=phpcs.xml'
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs='./vendor/bin/phpcs'
+let g:syntastic_php_phpcs_args='--standard=phpcs.xml --report=csv'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
