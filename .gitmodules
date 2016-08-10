@@ -10,9 +10,6 @@
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
-[submodule "bundle/JSON"]
-	path = bundle/JSON
-	url = https://github.com/vim-scripts/JSON.vim
 [submodule "bundle/argtextobj"]
 	path = bundle/argtextobj
 	url = git://github.com/vim-scripts/argtextobj.vim.git
