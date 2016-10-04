@@ -187,6 +187,10 @@ set nowrap                      " Do or don't wrap text(wrap/nowrap)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
 
+let php_sql_query = 1           " Turn on SQL syntax highlighting in PHP strings
+" let php_htmlInStrings = 1       " Turon on HTML syntax highlighting in PHP strings
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Folding                                                                    "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -640,10 +644,17 @@ let g:gutentags_cache_dir = $HOME . '/.cache/gutentags'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" localvimrc                                                                 "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:localvimrc_ask = 0
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Delete Trailing Whitespace                                                 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:DeleteTrailingWhitespace = 1
 let g:DeleteTrailingWhitespace_Action = 'delete'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snippets                                                                   "
