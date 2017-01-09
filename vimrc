@@ -14,6 +14,8 @@ set wildignore=*.pyc,*.pyo,*/build,*.egg,*/env,*/*.egg-info,*/vendor/*,*/node_mo
 set wildmode=longest,list,full  " Tab completion for filename autocomplete
 set wildmenu             " allow wildmode autocompletion
 
+let $PATH .= ':/Users/wweaver/.nvm/versions/node/v6.5.0/bin'
+
 if filereadable($HOME."/.vim/tags")
     set tags=~/.vim/tags
 endif
@@ -187,7 +189,7 @@ set nowrap                      " Do or don't wrap text(wrap/nowrap)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
 
-let php_sql_query = 1           " Turn on SQL syntax highlighting in PHP strings
+" let php_sql_query = 1           " Turn on SQL syntax highlighting in PHP strings
 " let php_htmlInStrings = 1       " Turon on HTML syntax highlighting in PHP strings
 
 
@@ -601,7 +603,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_php_phpcs='./vendor/bin/phpcs'
 let g:syntastic_php_phpcs_args='--standard=phpcs.xml --report=csv'
-
+let g:syntastic_javascript_checkers=['jscs']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python Mode                                                                "
@@ -660,6 +666,7 @@ let g:DeleteTrailingWhitespace_Action = 'delete'
 " Snippets                                                                   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:snippets_dir = "~/.vim/snippets"
+let g:snips_author = "Will Weaver <wweaver@cruisecritic.com>"
 source ~/.vim/snippets/python/AWeber.vim
 
 
