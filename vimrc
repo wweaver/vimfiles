@@ -638,7 +638,7 @@ let g:gv_ctrlp_cmd = 'GulpExt'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gutentags                                                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gutentags_exclude = ['*.css', '*.html', '*.js']
+let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js']
 let g:gutentags_cache_dir = $HOME . '/.cache/gutentags'
 
 
