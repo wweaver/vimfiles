@@ -135,58 +135,13 @@ snippet model
 
 		${3:id} = Column(${4:}${5:Integer}, primary_key=True)
 # Testing
-snippet test_suite regular
-	"""$1 test suite."""
-	from unittest2 import TestCase
-
-	from ${2:module} import $1
+snippet testsuite
+	from unittest import TestCase
 
 
-	class ${1:ClassName}TestCase(TestCase):
+	class Describe${1}(TestCase):
 
-		def test_${3:func}(self):
-			${4:pass}
-snippet test_suite functional
-	"""$1 functional test suite."""
-	from aw.fixture import FixtureTestCase
-	from ${2:my_app}.tests.fixtures import $3
-
-
-	class ${1:MyApp}TestCase(FixtureTestCase):
-
-		datasets = [${3:ActorData, DirectorData}]
-
-		def test_${4:actor}(self):
-			${5:pass}
-snippet testsuite kata
-	from ${1:script} import ${2:StringCalculator}
-
-
-	class Test$2(object):
-
-		def setUp(self):
-			self${3:.add} = $2()$3
-
-		${4}
-snippet testsuite model
-	from nose.tools import eq_, ok_, assert_raises
-	from sqlalchemy.exc import IntegrityError
-
-	from core_models import ${1:Model}
-	from core_models.tests.fixtures import $1Data
-	from core_models.tests.integration import ModelTestCase
-
-
-	class Describe$1(ModelTestCase):
-
-		datasets = [$1Data]
-
-		def setUp(self):
-			super(Describe$1, self).setUp()
-			self.default = self.get_instance($1Data.${2:uses_defaults})
-			self.${3:$1} = self.get_instance($1Data.${4:specifies_all})
-
-		${5}
+		${2}
 snippet test
 	def test_${1}(self):
 		${2:pass}

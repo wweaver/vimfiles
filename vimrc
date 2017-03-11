@@ -329,11 +329,11 @@ iab dmy <C-r>=strftime("%d %M %Y")<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions                                                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CdToProjectBase()
-   let _dir = strpart(expand("%:p:h"), 0, matchend(expand("%:p:h"), "_app"))
-   exec "cd " . _dir
-   unlet _dir
+function! CdToCc()
+   exec "cd ~/git/cruisecritic-php"
+   exec "NERDTree"
 endfunction
+command! Cc call CdToCc()
 
 function! Underscore2Camelcase(text)
    return substitute(a:text, "_\\([a-z]\\)", "\\U\\1", "g")

@@ -209,3 +209,7 @@ snippet tearDown
 
 		parent::tearDown();
 	}
+snippet cleanup
+	$this->generator->cleanupDb();
+snippet gen
+	$this->generator->generate${1:Ship}(${2});
