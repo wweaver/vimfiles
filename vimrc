@@ -325,6 +325,7 @@ iab pgdate <C-r>=strftime("%Y-%m-%d 00:00:00")<CR>
 iab pgtime <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 iab ymd <C-r>=strftime("%Y-%m-%d")<CR>
 iab dmy <C-r>=strftime("%d %M %Y")<CR>
+iab authore Will Weaver <wweaver@cruisecritic.com>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions                                                                  "
@@ -529,7 +530,7 @@ noremap <leader>nt <ESC>:NERDTreeToggle<CR>
 let NERDTreeIgnore=[
     \ '\~$', '\.pyc$', '\.egg-info$', '_compressed\.js$',
     \ '^build-python2\.[56]$', '^tags$', '^branches$', '^Icon.$',
-    \ '^dist$', '^build$', '^__pycache__$'
+    \ '^__pycache__$'
     \ ]
 let NERDTreeWinPos='right'
 let NERDTreeSortOrder=['__*\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
@@ -603,7 +604,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_php_phpcs='./vendor/bin/phpcs'
 let g:syntastic_php_phpcs_args='--standard=phpcs.xml --report=csv'
-let g:syntastic_javascript_checkers=['jscs']
+let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
