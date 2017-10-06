@@ -1,4 +1,4 @@
-"<br />html"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General                                                                    "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible         " Get rid of Vi compatibility mode. SET FIRST!
@@ -577,15 +577,6 @@ let $PROJECT_HOME='~/git'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Gist                                                                       "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:github_api_url = 'https://github-enterprise.colo.lair/api/v3'
-let g:github_user = 'willw'
-let g:gist_open_browser_after_post = 1
-let g:gist_clip_command = 'pbcopy'
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JIRA                                                                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jira_browse_url = 'https://jira.tripadvisor.com'
@@ -605,6 +596,8 @@ let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_php_phpcs='./vendor/bin/phpcs'
 let g:syntastic_php_phpcs_args='--standard=phpcs.xml --report=csv'
 let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_twig_checkers=[]
+let g:syntastic_html_checkers=[]
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -668,7 +661,7 @@ let g:DeleteTrailingWhitespace_Action = 'delete'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:snippets_dir = "~/.vim/snippets"
 let g:snips_author = "Will Weaver <wweaver@cruisecritic.com>"
-source ~/.vim/snippets/python/AWeber.vim
+" source ~/.vim/snippets/python/AWeber.vim
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

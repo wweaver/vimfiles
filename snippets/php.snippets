@@ -213,3 +213,8 @@ snippet cleanup
 	$this->generator->cleanupDb();
 snippet gen
 	$this->generator->generate${1:Ship}(${2});
+snippet pquery
+	$query = ${1};
+	print $query${3:->getQuery()}->toSql(true);
+	var_dump($query$3->getParams());
+	${2:exit;}
