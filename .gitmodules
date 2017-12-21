@@ -18,7 +18,7 @@
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
-	url = git://github.com/garbas/snipmate.vim.git
+	url = git://github.com/garbas/vim-snipmate
 [submodule "bundle/vcscommand"]
 	path = bundle/vcscommand
 	url = git://repo.or.cz/vcscommand
